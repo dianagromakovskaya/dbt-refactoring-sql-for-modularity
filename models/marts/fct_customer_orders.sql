@@ -44,12 +44,7 @@ customer_orders as (
 
         sum(if(orders.valid_order_date is not null, orders.order_value_dollars, 0)) over (
             partition by orders.customer_id
-        ) as customer_total_lifetime_value,
-        array_agg(distinct orders.order_id) over (
-            partition by orders.customer_id
-        ) as customer_order_ids
-
-
+        ) as customer_total_lifetime_value
     from orders
     inner join customers
         on orders.customer_id = customers.customer_id
