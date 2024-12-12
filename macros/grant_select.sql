@@ -1,4 +1,4 @@
-{% macro grant_select(project='dbt-project', schema=target.dataset, user='user:dbt-user@your-project.iam.gserviceaccount.com') %}
+{% macro grant_select(project=target.project, schema=target.dataset, user='user:dbt-user@your-project.iam.gserviceaccount.com') %}
     {% set sql %} 
         grant `roles/bigquery.dataViewer` on schema `{{ project }}.{{ schema }}` to "{{ user }}";
     {% endset %}
