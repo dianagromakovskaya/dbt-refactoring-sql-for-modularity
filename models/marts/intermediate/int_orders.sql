@@ -1,3 +1,7 @@
+{{ config (
+    materialized='ephemeral'
+) }}
+
 with
 
 orders as (
